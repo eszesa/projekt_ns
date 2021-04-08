@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 
-public class App extends Application {
+public class ERP extends Application {
 
     private Stage mainWindow;
 
@@ -24,12 +24,12 @@ public class App extends Application {
         mainWindow = stage;
 
         VBox root = new VBox();
-        Text text = new Text("sima szoveg");
+        Text text = new Text("welcome");
         root.getChildren().add(text);
-        Scene scene = new Scene(root, 300, 200);
+        Scene scene = new Scene(root, 800, 500);
 
         stage.setScene(scene);
-        stage.setTitle("fejlec szoveg");
+        stage.setTitle("ERP");
         stage.show();
     }
 
