@@ -1,5 +1,0 @@
-hu\novaservices\App.class
-hu\novaservices\domain\Employees.class
-hu\novaservices\PrimaryController.class
-hu\novaservices\SecondaryController.class
-hu\novaservices\util\HibernateUtil.class
