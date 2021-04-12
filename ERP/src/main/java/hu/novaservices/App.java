@@ -1,23 +1,34 @@
 package hu.novaservices;
 
+import hu.novaservices.domain.Employee;
+import hu.novaservices.util.HibernateUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import org.hibernate.Session;
 import java.io.IOException;
+import java.util.List;
+import hu.novaservices.domain.Employee;
+import hu.novaservices.util.*;
+import org.hibernate.*;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
+    //Session session = HibernateUtil.getSessionFactory().openSession();
+    //session.beginTransaction();
+    //session.close();
+
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("primary"), 800, 600);
+        stage.setTitle("NovaServices ERP");
         stage.setScene(scene);
         stage.show();
     }
