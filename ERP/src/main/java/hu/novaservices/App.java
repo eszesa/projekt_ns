@@ -21,7 +21,10 @@ public class App extends Application {
 
     //Session session = HibernateUtil.getSessionFactory().openSession();
     //session.beginTransaction();
+    //Employee employee = new Employee("Teszt", "teszt@gmail.com", "aktív", "alkalmazott", "belsős", 100);
+    //session.getTransaction().commit();
     //session.close();
+    //HibernateUtil.getSessionFactory().close();
 
     private static Scene scene;
 

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="hu.novaservices.domain.Employee" table="EMPLOYEES">
+        <id name="id" type="long">
+            <column name="ID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="id_card" type="java.lang.String">
+            <column name="ID_CARD" not-null="true"/>
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" not-null="true"/>
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="SEX"/>
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS"/>
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" not-null="true"/>
+        </property>
+        <property name="birth_date" type="java.util.Date">
+            <column name="BIRTH_DATE"/>
+        </property>
+        <property name="birth_place" type="java.lang.String">
+            <column name="BIRTH_PLACE"/>
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE"/>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" not-null="true"/>
+        </property>
+        <property name="status_type" type="java.lang.String">
+            <column name="STATUS_TYPE" not-null="true"/>
+        </property>
+        <property name="secondary_name" type="java.lang.String">
+            <column name="SECONDARY_NAME"/>
+        </property>
+        <property name="secondary_phone" type="java.lang.String">
+            <column name="SECONDARY_PHONE"/>
+        </property>
+        <property name="department" type="java.lang.String">
+            <column name="TASK_CLASS" not-null="true"/>
+        </property>
+        <property name="hourly_rate" type="int">
+            <column name="HOURLY_RATE"/>
+        </property>
+        <property name="monthly_hours" type="int">
+            <column name="MONTHLY_HOURS" default="160"/>
+        </property>
+        <property name="position" type="java.lang.String">
+            <column name="POS"/>
+        </property>
+    </class>
+
+</hibernate-mapping>
