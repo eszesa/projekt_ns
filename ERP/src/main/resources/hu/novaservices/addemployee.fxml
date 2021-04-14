@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
-<DialogPane fx:controller="hu.novaservices.AddEmployeeController"
-            xmlns:fx="http://javafx.com/fxml">
+<DialogPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="hu.novaservices.AddEmployeeController">
     <content>
-        <GridPane vgap="10" hgap="10">
-            <Label text="Teljes név*" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-            <Label text="E-mail cím*" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-            <Label text="Személyi igazolvány szám" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-            <Label text="Cím" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-            <Label text="Telefonszám" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-            <Label text="Nem" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-            <Label text="Születési hely és dátum" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="6" GridPane.columnIndex="1"/>
-            <DatePicker  GridPane.rowIndex="6" GridPane.columnIndex="2"/>
-            <Label text="Érteítési név és telefonszám" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="7" GridPane.columnIndex="1"/>
-            <TextField  GridPane.rowIndex="7" GridPane.columnIndex="2"/>
-            <Label text="Státusz és típus*" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="8" GridPane.columnIndex="1"/>
-            <TextField  GridPane.rowIndex="8" GridPane.columnIndex="2"/>
-            <Label text="Feladat osztály*" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="9" GridPane.columnIndex="1"/>
-            <Label text="Óradíj*" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="10" GridPane.columnIndex="1"/>
-            <Label text="Pozíció" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="11" GridPane.columnIndex="1"/>
-            <Label text="Munkaidő alap" GridPane.rowIndex="12" GridPane.columnIndex="0"/>
-            <TextField  GridPane.rowIndex="12" GridPane.columnIndex="1"/>
+        <GridPane hgap="10" vgap="10">
+            <Label text="Teljes név*" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label text="E-mail cím*" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Személyi igazolvány szám" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Cím" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Telefonszám" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Nem" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Születési hely és dátum" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <DatePicker GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label text="Érteítési név és telefonszám" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label text="Státusz és típus*" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label text="Feladat osztály*" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label text="Óradíj*" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label text="Pozíció" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label text="Munkaidő alap" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <HBox alignment="BOTTOM_LEFT" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+                <children>
+                    <Button fx:id="secondaryButton" onAction="#switchToSecondary" text="Vissza" translateY="500.0" />
+                    <Button fx:id="saveButton" text="Mentés" translateY="500.0" />
+                </children>
+            </HBox>
         </GridPane>
     </content>
 </DialogPane>
