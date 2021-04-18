@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import org.hibernate.Session;
 import java.io.IOException;
 import java.util.List;
+import lombok.*;
+import javax.persistence.*;
 import hu.novaservices.domain.Employee;
 import hu.novaservices.util.*;
 import org.hibernate.*;
