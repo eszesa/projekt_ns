@@ -20,6 +20,9 @@
                         <TableColumn text="Feladat osztály" prefWidth="120.0"/>
                         <TableColumn text="Munkaidőalap" prefWidth="120.0"/>
                     </columns>
+                    <rowFactory>
+
+                    </rowFactory>
                 </TableView>
             </children>
         </GridPane>

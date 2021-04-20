@@ -3,6 +3,7 @@ package hu.novaservices.util;
 import javafx.scene.control.Alert;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -29,8 +30,18 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
+    public static void showWarning(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Hiba");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
 
-    /*private static SessionFactory buildSessionFactory() {
+        alert.showAndWait();
+    }
+    /*
+
+
+    private static SessionFactory buildSessionFactory() {
         try {
             return new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
@@ -46,14 +57,8 @@ public class HibernateUtil {
     public static void shutdown() {
         // Close caches and connection pools
         getSessionFactory().close();
-    }*/
-
-    public static void showWarning(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Hiba");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-
-        alert.showAndWait();
     }
+*/
+
+
 }

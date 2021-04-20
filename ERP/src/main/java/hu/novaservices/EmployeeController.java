@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class AddEmployeeController {
+public class EmployeeController {
 
     @FXML
     private TextField nameTF;

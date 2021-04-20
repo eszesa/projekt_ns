@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<DialogPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="hu.novaservices.AddEmployeeController">
+<DialogPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="hu.novaservices.EmployeeController">
     <content>
         <GridPane hgap="10" vgap="10">
             <Label text="Teljes név*" GridPane.columnIndex="0" GridPane.rowIndex="0" />
