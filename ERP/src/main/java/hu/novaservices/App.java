@@ -1,12 +1,8 @@
 package hu.novaservices;
 
-import java.io.*;
 import hu.novaservices.domain.Employee;
-import hu.novaservices.domain.Person;
 import hu.novaservices.util.HibernateUtil;
 import javafx.application.Application;
-import javafx.beans.property.DoubleProperty;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,14 +13,8 @@ import javafx.stage.Stage;
 import org.hibernate.Session;
 import java.io.IOException;
 import java.util.List;
-import lombok.*;
-import javax.persistence.*;
-import hu.novaservices.domain.Employee;
-import hu.novaservices.util.*;
-import org.hibernate.*;
-import org.w3c.dom.ls.LSOutput;
 
-import javax.persistence.Query;
+import org.hibernate.query.Query;
 
 /**
  * JavaFX App
@@ -42,7 +32,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         constructTable();
 
-        Button addEmployee = new Button("Új személy hozzáadása");
+        Button addEmployee = new Button("Új létrehozása");
         addEmployee.setOnAction(event -> {
             try {
                 scene = new Scene(loadFXML("addemployee"), 800, 600);
@@ -112,10 +102,20 @@ public class App extends Application {
 
     public static void hibernateSession() {
         Session session = HibernateUtil.getSessionFactory().openSession();
+
         session.beginTransaction();
 
-        //Employee employee = new Employee("Teszt", "teszt@gmail.com", "aktív", "alkalmazott", "belsős", 100);
-        //session.getTransaction().commit();
+        session.save(new Employee("Jakab Gipsz","teszt@gmail.com", "aktív", "alkalmazott", "belsős", 100));
+
+        session.getTransaction().commit();
+
+        Query q = session.createQuery("From Employee ");
+
+        List<Employee> resultList = q.list();
+        System.out.println("num of employees:" + resultList.size());
+        for (Employee next : resultList) {
+            System.out.println("next employee: " + next);
+        }
 
         session.close();
         HibernateUtil.getSessionFactory().close();
@@ -133,7 +133,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
-        hibernateSession();
+        //hibernateSession();
     }
 
     /*Session session = HibernateUtil.getSessionFactory().openSession();

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="hu.novaservices.domain.Company" table="COMPANIES">
+        <id name="id" type="long">
+            <column name="ID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="short_name" type="java.lang.String">
+            <column name="SHORT_NAME" not-null="true"/>
+        </property>
+        <property name="full_name" type="java.lang.String">
+            <column name="FULL_NAME"/>
+        </property>
+        <property name="tax_number" type="java.lang.String">
+            <column name="TAX_NUMBER"/>
+        </property>
+        <property name="industry_classification" type="java.lang.String">
+            <column name="INDUSTRY_CLASSIFICATION" not-null="true"/>
+        </property>
+        <property name="headquarters" type="java.lang.String">
+            <column name="HEADQUARTERS" not-null="true"/>
+        </property>
+        <property name="connection_type" type="java.lang.String">
+            <column name="CONNECTION_TYPE" not-null="true"/>
+        </property>
+        <property name="comp_contact" type="java.lang.String">
+            <column name="COMP_CONTACT" not-null="true"/>
+        </property>
+        <property name="our_contact" type="java.lang.String">
+            <column name="OUR_CONTACT" not-null="true"/>
+        </property>
+        <property name="reg_number" type="java.lang.Integer">
+            <column name="REG_NUMBER"/>
+        </property>
+        <property name="bank_account_number" type="java.lang.String">
+            <column name="BANK_ACCOUNT_NUMBER"/>
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION"/>
+        </property>
+        <property name="billing_name" type="java.lang.String">
+            <column name="BILLING_NAME"/>
+        </property>
+        <property name="billing_address" type="java.lang.String">
+            <column name="BILLING_ADDRESS"/>
+        </property>
+    </class>
+
+</hibernate-mapping>

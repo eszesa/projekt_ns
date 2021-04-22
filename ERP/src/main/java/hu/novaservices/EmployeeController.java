@@ -89,5 +89,8 @@ public class EmployeeController {
                 HibernateUtil.showWarning("Az óradíj megadása kötelező");
                 return;
             }
+            else {
+
+            }
         }
     }
