@@ -1,13 +1,19 @@
 package hu.novaservices;
 
+import hu.novaservices.domain.Company;
 import hu.novaservices.domain.Employee;
 import hu.novaservices.util.HibernateUtil;
+import hu.novaservices.view.CompanyAddDialog;
+import hu.novaservices.view.EmployeeAddDialog;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.hibernate.Session;
@@ -23,30 +29,42 @@ public class App extends Application {
 
     private static Scene scene;
     TableView<Employee> table = new TableView<>();
-    TableView<Employee> companiesTable = new TableView<>();
-    private SecondaryController employeeController = new SecondaryController();
+    TableView<Company> companiesTable = new TableView<>();
+
+    private EmployeeController employeeController = new EmployeeController();
+    private CompanyController companyController = new CompanyController();
+
     private Scene employeeListScene;
     private Scene companiesListScene;
 
     @Override
     public void start(Stage stage) throws IOException {
         constructTable();
+        constructCompaniesTable();
 
         Button addEmployee = new Button("Új létrehozása");
-        addEmployee.setOnAction(event -> {
-            try {
-                scene = new Scene(loadFXML("addemployee"), 800, 600);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            stage.setTitle("Új személy hozzáadása - ERP Nova Services");
-            stage.setScene(scene);
-            stage.show();
-        });
+        addEmployee.setOnAction(e -> new EmployeeAddDialog(employeeController)); // menupont esemenykezelese
 
-        VBox root = new VBox(createMenuBar(stage), table, addEmployee);
+        Button addCompany = new Button("Új létrehozása");
+        addCompany.setOnAction(e2 -> new CompanyAddDialog(companyController)); // menupont esemenykezelese
+
+        FlowPane buttonPane = new FlowPane();
+        buttonPane.setOrientation(Orientation.HORIZONTAL);
+        buttonPane.setHgap(30);
+        buttonPane.setVgap(30);
+        buttonPane.setAlignment(Pos.BOTTOM_CENTER);
+        buttonPane.getChildren().addAll(addEmployee);
+
+        FlowPane buttonPane2 = new FlowPane();
+        buttonPane2.setOrientation(Orientation.HORIZONTAL);
+        buttonPane2.setHgap(30);
+        buttonPane2.setVgap(30);
+        buttonPane2.setAlignment(Pos.BOTTOM_CENTER);
+        buttonPane2.getChildren().addAll(addCompany);
+
+        VBox root = new VBox(createMenuBar(stage), table, buttonPane);
         root.setSpacing(20);
-        VBox root2 = new VBox(createMenuBar(stage), companiesTable);
+        VBox root2 = new VBox(createMenuBar(stage), companiesTable, buttonPane2);
         root2.setSpacing(20);
         employeeListScene = new Scene(root, 900, 600);
         companiesListScene = new Scene(root2, 900, 600);
@@ -94,10 +112,46 @@ public class App extends Application {
         TableColumn<Employee, String> monthlyHoursCol = new TableColumn<>("Munkaidő alap");
         monthlyHoursCol.setCellValueFactory(new PropertyValueFactory<Employee, String>("monthly_hours"));
 
+        nameCol.prefWidthProperty().bind(table.widthProperty().multiply(0.20));
+        positionCol.prefWidthProperty().bind(table.widthProperty().multiply(0.20));
+        typeCol.prefWidthProperty().bind(table.widthProperty().multiply(0.20));
+        taskCol.prefWidthProperty().bind(table.widthProperty().multiply(0.20));
+        monthlyHoursCol.prefWidthProperty().bind(table.widthProperty().multiply(0.20));
 
         table.getColumns().addAll(nameCol, positionCol, typeCol, taskCol, monthlyHoursCol);
-        //TODO
+        //TODO EmployeeController getAll()
         //table.setItems(FXCollections.observableArrayList(employeeController.getAll()));
+    }
+
+    private void constructCompaniesTable() {
+        companiesTable.setEditable(false);
+
+        TableColumn<Company, String> shortNameCol = new TableColumn<>("Rövid név");
+        shortNameCol.setCellValueFactory(new PropertyValueFactory<Company, String>("short_name"));
+
+        TableColumn<Company, String> headquartersCol = new TableColumn<>("Székhely");
+        headquartersCol.setCellValueFactory(new PropertyValueFactory<Company, String>("headquarters"));
+
+        TableColumn<Company, String> industryCol = new TableColumn<>("Iparági besorolás");
+        industryCol.setCellValueFactory(new PropertyValueFactory<Company, String>("industry_classification"));
+
+        TableColumn<Company, String> connectionCol = new TableColumn<>("Cég kapcsolattípus");
+        connectionCol.setCellValueFactory(new PropertyValueFactory<Company, String>("connection_type"));
+
+        TableColumn<Company, String> compContactCol = new TableColumn<>("Cégtől kapcsolattartó");
+        compContactCol.setCellValueFactory(new PropertyValueFactory<Company, String>("comp_contact"));
+
+        TableColumn<Company, String> ourContactCol = new TableColumn<>("Tőlünk kapcsolattartó");
+        ourContactCol.setCellValueFactory(new PropertyValueFactory<Company, String>("our_contact"));
+
+        shortNameCol.prefWidthProperty().bind(table.widthProperty().multiply(0.17));
+        headquartersCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
+        industryCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
+        connectionCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
+        compContactCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
+        ourContactCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
+
+        companiesTable.getColumns().addAll(shortNameCol, headquartersCol, industryCol, connectionCol, compContactCol, ourContactCol);
     }
 
     public static void hibernateSession() {
@@ -105,7 +159,7 @@ public class App extends Application {
 
         session.beginTransaction();
 
-        session.save(new Employee("Jakab Gipsz","teszt@gmail.com", "aktív", "alkalmazott", "belsős", 100));
+        session.save(new Employee("Gipsz Jakab","teszt@gmail.com", "aktív", "alkalmazott", "belsős", 100));
 
         session.getTransaction().commit();
 

@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class EmployeeController {
 
-    @FXML
+    /*@FXML
     private TextField nameTF;
 
     @FXML
@@ -92,5 +92,5 @@ public class EmployeeController {
             else {
 
             }
-        }
+        }*/
     }
