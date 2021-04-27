@@ -1,12 +1,12 @@
 package hu.novaservices.view;
 
-import hu.novaservices.CompanyController;
-import hu.novaservices.EmployeeController;
+import hu.novaservices.controller.CompanyController;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -31,9 +31,9 @@ public class CompanyAddDialog extends Stage {
         TextField shortNameTF = new TextField();
         TextField fullNameTF = new TextField();
         TextField taxNumberTF = new TextField();
-        TextField industryClassTF = new TextField();
+        final ComboBox connTypeCB = new ComboBox();
         TextField headquartersTF = new TextField();
-        TextField connTypeTF = new TextField();
+        final ComboBox indTypeCB = new ComboBox();
         TextField compContactTF = new TextField();
         TextField ourContactTF = new TextField();
         TextField regNumberTF = new TextField();
@@ -43,6 +43,25 @@ public class CompanyAddDialog extends Stage {
         TextField descriptionTF = new TextField();
         descriptionTF.setPrefSize(50,50);
 
+        connTypeCB.getItems().addAll(
+                "instabil együttműködés",
+                "stabil együttműködés",
+                "jó kapcsolat",
+                "stratégiailag fontos kapcsolat",
+                "nem támogatott"
+        );
+
+        indTypeCB.getItems().addAll(
+                "egészségügy",
+                "ipar",
+                "kereskedelem",
+                "közlekedés",
+                "államigazgatás",
+                "pénzintézet",
+                "szolgáltatás",
+                "telekommunikáció"
+        );
+
         gridPane.add(new Text("Rövid név:"), 0, 0);
         gridPane.add(shortNameTF, 1, 0);
         gridPane.add(new Text("Teljes név:"), 0, 1);
@@ -50,9 +69,9 @@ public class CompanyAddDialog extends Stage {
         gridPane.add(new Text("Adószám:"), 0, 2);
         gridPane.add(taxNumberTF, 1, 2);
         gridPane.add(new Text("Iparági besorolás:"), 0, 3);
-        gridPane.add(industryClassTF, 1, 3);
+        gridPane.add(indTypeCB, 1, 3);
         gridPane.add(new Text("Cég kapcsolattípus:"), 0, 4);
-        gridPane.add(connTypeTF, 1, 4);
+        gridPane.add(connTypeCB, 1, 4);
         gridPane.add(new Text("Céges kapcsolattartó:"), 0, 5);
         gridPane.add(compContactTF, 1, 5);
         gridPane.add(new Text("Tőlünk kapcsolattartó:"), 0, 6);

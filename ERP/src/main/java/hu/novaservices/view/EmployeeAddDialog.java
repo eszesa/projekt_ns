@@ -1,7 +1,6 @@
 package hu.novaservices.view;
 
-import hu.novaservices.EmployeeController;
-import hu.novaservices.domain.Employee;
+import hu.novaservices.controller.EmployeeController;
 import hu.novaservices.util.HibernateUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -76,6 +75,7 @@ public class EmployeeAddDialog extends Stage {
         gridPane.add(positionTF, 1, 11);
         gridPane.add(new Text("Munkaidő alap:"), 0, 12);
         gridPane.add(monthlyHoursTF, 1, 12);
+        gridPane.add(new Text("* A csillaggal jelölt mezők kitöltése kötelező"),0, 14);
 
 
         //gombok eseménykezelés
@@ -128,7 +128,7 @@ public class EmployeeAddDialog extends Stage {
         buttonPane.setAlignment(Pos.BOTTOM_LEFT);
         buttonPane.getChildren().addAll(saveButton, cancelButton);
 
-        gridPane.add(buttonPane, 0, 14, 2, 1);
+        gridPane.add(buttonPane, 0, 16, 2, 1);
 
         Scene scene = new Scene(gridPane);
         setScene(scene);

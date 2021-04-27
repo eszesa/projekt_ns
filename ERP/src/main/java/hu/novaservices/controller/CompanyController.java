@@ -1,4 +1,5 @@
-package hu.novaservices;
+package hu.novaservices.controller;
 
 public class CompanyController {
+
 }

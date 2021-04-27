@@ -1,5 +1,7 @@
 package hu.novaservices;
 
+import hu.novaservices.controller.CompanyController;
+import hu.novaservices.controller.EmployeeController;
 import hu.novaservices.domain.Company;
 import hu.novaservices.domain.Employee;
 import hu.novaservices.util.HibernateUtil;
@@ -145,9 +147,9 @@ public class App extends Application {
         ourContactCol.setCellValueFactory(new PropertyValueFactory<Company, String>("our_contact"));
 
         shortNameCol.prefWidthProperty().bind(table.widthProperty().multiply(0.17));
-        headquartersCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
-        industryCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
-        connectionCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
+        headquartersCol.prefWidthProperty().bind(table.widthProperty().multiply(0.17));
+        industryCol.prefWidthProperty().bind(table.widthProperty().multiply(0.17));
+        connectionCol.prefWidthProperty().bind(table.widthProperty().multiply(0.17));
         compContactCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
         ourContactCol.prefWidthProperty().bind(table.widthProperty().multiply(0.16));
 

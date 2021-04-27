@@ -1,4 +1,4 @@
-package hu.novaservices;
+package hu.novaservices.controller;
 
 import hu.novaservices.util.HibernateUtil;
 import javafx.fxml.FXML;
