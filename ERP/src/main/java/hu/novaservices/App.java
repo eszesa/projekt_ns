@@ -68,8 +68,8 @@ public class App extends Application {
         root.setSpacing(20);
         VBox root2 = new VBox(createMenuBar(stage), companiesTable, buttonPane2);
         root2.setSpacing(20);
-        employeeListScene = new Scene(root, 900, 600);
-        companiesListScene = new Scene(root2, 900, 600);
+        employeeListScene = new Scene(root, 950, 600);
+        companiesListScene = new Scene(root2, 950, 600);
 
         stage.setTitle("ERP Nova Services");
         stage.setScene(employeeListScene);

@@ -7,6 +7,7 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
@@ -34,17 +35,46 @@ public class EmployeeAddDialog extends Stage {
         TextField idCardTF = new TextField();
         TextField addressTF = new TextField();
         TextField phoneTF = new TextField();
-        TextField sexTF = new TextField();
+        //TextField sexTF = new TextField();
+        final ComboBox sexCB = new ComboBox();
         TextField birthPlaceTF = new TextField();
         DatePicker birthDateDP = new DatePicker();
         TextField secondaryNameTF = new TextField();
         TextField secondaryPhoneTF = new TextField();
-        TextField statusTF = new TextField();
-        TextField statusTypeTF = new TextField();
-        TextField taskClassTF = new TextField();
+        //TextField statusTF = new TextField();
+        final ComboBox statusCB = new ComboBox();
+        //TextField statusTypeTF = new TextField();
+        final ComboBox statTypeCB = new ComboBox();
+        //TextField taskClassTF = new TextField();
+        final ComboBox taskClassCB = new ComboBox();
         TextField hourlyRateTF = new TextField();
         TextField positionTF = new TextField();
         TextField monthlyHoursTF = new TextField();
+
+        sexCB.getItems().addAll(
+                "férfi",
+                "nő"
+        );
+
+        statusCB.getItems().addAll(
+                "aktív",
+                "passzív"
+        );
+
+        statTypeCB.getItems().addAll(
+                "Munkavállaló",
+                "Alvállalkozó",
+                "Diák"
+        );
+
+        taskClassCB.getItems().addAll(
+                //'external', 'internal', 'manufacturer', 'management'
+                "Belsős",
+                "Külsős termelő",
+                "Menedzsment",
+                "Termelő"
+        );
+
 
         gridPane.add(new Text("Teljes név*:"), 0, 0);
         gridPane.add(nameTF, 1, 0);
@@ -57,7 +87,7 @@ public class EmployeeAddDialog extends Stage {
         gridPane.add(new Text("Telefonszám:"), 0, 4);
         gridPane.add(phoneTF, 1, 4);
         gridPane.add(new Text("Nem:"), 0, 5);
-        gridPane.add(sexTF, 1, 5);
+        gridPane.add(sexCB, 1, 5);
         gridPane.add(new Text("Születési hely és dátum:"), 0, 6);
         gridPane.add(birthPlaceTF, 1, 6);
         gridPane.add(birthDateDP, 2, 6);
@@ -65,10 +95,10 @@ public class EmployeeAddDialog extends Stage {
         gridPane.add(secondaryNameTF, 1, 7);
         gridPane.add(secondaryPhoneTF, 2, 7);
         gridPane.add(new Text("Státusz és típus*:"), 0, 8);
-        gridPane.add(statusTF, 1, 8);
-        gridPane.add(statusTypeTF, 2, 8);
+        gridPane.add(statusCB, 1, 8);
+        gridPane.add(statTypeCB, 2, 8);
         gridPane.add(new Text("Feledat osztály*:"), 0, 9);
-        gridPane.add(taskClassTF, 1, 9);
+        gridPane.add(taskClassCB, 1, 9);
         gridPane.add(new Text("Óradíj*:"), 0, 10);
         gridPane.add(hourlyRateTF, 1, 10);
         gridPane.add(new Text("Pozíció:"), 0, 11);
@@ -91,15 +121,15 @@ public class EmployeeAddDialog extends Stage {
                 HibernateUtil.showWarning("Az email cím megadása kötelező");
                 return;
             }
-            if (statusTF.getText().contentEquals("")) {
+            if (statusCB.getItems().contains(null)) {
                 HibernateUtil.showWarning("Az státusz megadása kötelező");
                 return;
             }
-            if (statusTypeTF.getText().contentEquals("")) {
+            if (statTypeCB.getItems().contains(null)) {
                 HibernateUtil.showWarning("Az státusz típus megadása kötelező");
                 return;
             }
-            if (taskClassTF.getText().contentEquals("")) {
+            if (taskClassCB.getItems().contains(null)) {
                 HibernateUtil.showWarning("Az feladat osztály megadása kötelező");
                 return;
             }
@@ -130,7 +160,7 @@ public class EmployeeAddDialog extends Stage {
 
         gridPane.add(buttonPane, 0, 16, 2, 1);
 
-        Scene scene = new Scene(gridPane);
+        Scene scene = new Scene(gridPane, 650, 600);
         setScene(scene);
         setTitle("NovaServices ERP - Új személy felvétele");
         show();
