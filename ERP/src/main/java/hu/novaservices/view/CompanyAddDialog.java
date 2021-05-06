@@ -1,6 +1,7 @@
 package hu.novaservices.view;
 
 import hu.novaservices.controller.CompanyController;
+import hu.novaservices.util.HibernateUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -92,7 +93,12 @@ public class CompanyAddDialog extends Stage {
         //gombok eseménykezelés
         Button saveButton = new Button("Mentés");
         saveButton.setDefaultButton(true);
-        saveButton.setOnAction(e -> {});
+        saveButton.setOnAction(e -> {
+            if (taxNumberTF.getText().contentEquals("")) {
+                HibernateUtil.showWarning("A név megadása kötelező");
+                return;
+            }
+        });
 
         Button cancelButton = new Button("Bezárás");
         cancelButton.setCancelButton(true);

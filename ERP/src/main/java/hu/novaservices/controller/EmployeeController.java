@@ -1,13 +1,25 @@
 package hu.novaservices.controller;
 
+import hu.novaservices.domain.Employee;
 import hu.novaservices.util.HibernateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import java.io.IOException;
 
 public class EmployeeController {
+
+    public Employee showEmployee(Session session, String name) {
+        Query query=session.createQuery("from Employee e where e.name=:name");
+        query.setParameter("name", name);
+        Employee e= (Employee) query.uniqueResult();
+        return e;
+    }
+
+    // TODO getAll()
 
     /*@FXML
     private TextField nameTF;

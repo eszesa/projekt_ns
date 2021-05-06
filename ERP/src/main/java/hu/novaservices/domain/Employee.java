@@ -1,6 +1,9 @@
 package hu.novaservices.domain;
 
+import javafx.beans.property.StringProperty;
+import org.hibernate.Query;
 import lombok.*;
+import org.hibernate.Session;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -63,5 +66,27 @@ public @Data class Employee {
         this.position = position;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", id_card='" + id_card + '\'' +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", birth_date=" + birth_date +
+                ", birth_place='" + birth_place + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status='" + status + '\'' +
+                ", status_type='" + status_type + '\'' +
+                ", secondary_name='" + secondary_name + '\'' +
+                ", secondary_phone='" + secondary_phone + '\'' +
+                ", department='" + department + '\'' +
+                ", hourly_rate=" + hourly_rate +
+                ", monthly_hours=" + monthly_hours +
+                ", position='" + position + '\'' +
+                '}';
+    }
 
 }
