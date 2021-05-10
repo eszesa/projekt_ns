@@ -8,6 +8,7 @@ import hu.novaservices.util.HibernateUtil;
 import hu.novaservices.view.CompanyAddDialog;
 import hu.novaservices.view.EmployeeAddDialog;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -121,8 +122,8 @@ public class App extends Application {
         monthlyHoursCol.prefWidthProperty().bind(table.widthProperty().multiply(0.20));
 
         table.getColumns().addAll(nameCol, positionCol, typeCol, taskCol, monthlyHoursCol);
-        //TODO EmployeeController getAll()
-        //table.setItems(FXCollections.observableArrayList(employeeController.getAll()));
+        //TODO EmployeeController listEmployees()
+        //table.setItems(FXCollections.observableArrayList(employeeController.listEmployees()));
     }
 
     private void constructCompaniesTable() {

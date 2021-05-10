@@ -9,6 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.io.IOException;
+import java.util.List;
 
 public class EmployeeController {
 
@@ -19,90 +20,22 @@ public class EmployeeController {
         return e;
     }
 
-    // TODO getAll()
+    // TODO listEmployees()
 
-    /*@FXML
-    private TextField nameTF;
+    public static void listEmployees() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        //session.save(new Employee("Gipsz Jakab","teszt@gmail.com", "aktív", "alkalmazott", "belsős", 100));
+        //session.getTransaction().commit();
 
-    @FXML
-    private TextField emailTF;
+        Query q = session.createQuery("SELECT name, position, status_type, department, monthly_hours FROM Employee");
 
-    @FXML
-    private TextField idCardTF;
+        List<Employee> resultList = q.list();
 
-    @FXML
-    private TextField addressTF;
+        session.close();
+        HibernateUtil.getSessionFactory().close();
 
-    @FXML
-    private TextField phoneTF;
-
-    @FXML
-    private TextField sexTF;
-
-    @FXML
-    private TextField birthPlaceTF;
-
-    @FXML
-    private DatePicker birthDateDP;
-
-    @FXML
-    private TextField secondaryNameTF;
-
-    @FXML
-    private TextField secondaryPhoneTF;
-
-    @FXML
-    private TextField statusTF;
-
-    @FXML
-    private TextField statusTypeTF;
-
-    @FXML
-    private TextField taskClassTF;
-
-    @FXML
-    private TextField hourlyRateTF;
-
-    @FXML
-    private TextField positionTF;
-
-    @FXML
-    private TextField monthlyHoursTF;
-
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
     }
 
-    @FXML
-    private void saveNewEmployee() throws IOException {
-        //kötelező mezők kitöltésének ellenőrzése mentés előtt
-            if (nameTF.getText().contentEquals("")) {
-                HibernateUtil.showWarning("A név megadása kötelező");
-                return;
-            }
-            if (emailTF.getText().contentEquals("")) {
-                HibernateUtil.showWarning("Az email cím megadása kötelező");
-                return;
-            }
-            if (statusTF.getText().contentEquals("")) {
-                HibernateUtil.showWarning("Az státusz megadása kötelező");
-                return;
-            }
-            if (statusTypeTF.getText().contentEquals("")) {
-                HibernateUtil.showWarning("Az státusz típus megadása kötelező");
-                return;
-            }
-            if (taskClassTF.getText().contentEquals("")) {
-                HibernateUtil.showWarning("Az feladat osztály megadása kötelező");
-                return;
-            }
-            if (hourlyRateTF.getText().contentEquals("")) {
-                HibernateUtil.showWarning("Az óradíj megadása kötelező");
-                return;
-            }
-            else {
 
-            }
-        }*/
-    }
+}
