@@ -37,5 +37,10 @@ public class EmployeeController {
 
     }
 
+    public static void addEmployee() {
+
+
+    }
+
 
 }
