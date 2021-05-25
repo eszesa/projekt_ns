@@ -50,6 +50,7 @@ public class EmployeeAddDialog extends Stage {
         TextField hourlyRateTF = new TextField();
         TextField positionTF = new TextField();
         TextField monthlyHoursTF = new TextField();
+        TextField projektTF = new TextField();
 
         sexCB.getItems().addAll(
                 "férfi",
@@ -105,7 +106,9 @@ public class EmployeeAddDialog extends Stage {
         gridPane.add(positionTF, 1, 11);
         gridPane.add(new Text("Munkaidő alap:"), 0, 12);
         gridPane.add(monthlyHoursTF, 1, 12);
-        gridPane.add(new Text("* A csillaggal jelölt mezők kitöltése kötelező"),0, 14);
+        gridPane.add(new Text("Projekt:"), 0, 13);
+        gridPane.add(projektTF, 1, 13);
+        gridPane.add(new Text("* A csillaggal jelölt mezők kitöltése kötelező"),0, 15);
 
 
         //gombok eseménykezelés
@@ -158,7 +161,7 @@ public class EmployeeAddDialog extends Stage {
         buttonPane.setAlignment(Pos.BOTTOM_LEFT);
         buttonPane.getChildren().addAll(saveButton, cancelButton);
 
-        gridPane.add(buttonPane, 0, 16, 2, 1);
+        gridPane.add(buttonPane, 0, 17, 2, 1);
 
         Scene scene = new Scene(gridPane, 650, 600);
         setScene(scene);

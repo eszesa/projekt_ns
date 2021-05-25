@@ -1,27 +1,28 @@
 package hu.novaservices.dao;
 
-import hu.novaservices.domain.Company;
+import hu.novaservices.domain.Employee;
+import hu.novaservices.domain.Project;
 import hu.novaservices.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.util.List;
 
-public class CompanyDaoImpl implements CompanyDao{
+public class ProjectDaoImpl implements ProjectDAO {
 
-    //private static final String INSERT_COMPANY = "INSERT INTO Company (short_name, headquarters, industry_classification, connection_type, comp_contact, our_contact) VALUES " +"(?,?,?,?,?,?)";
+    //private static final String INSERT_PROJECT = "INSERT INTO Project (code, name, starting_date, ending_date, status, income, contractor, project_manager) VALUES " + "(?,?,?,?,?,?, ?, ?)";
 
-    private static final String SELECT_COMPANIES = "SELECT (name, position, status_type, department, monthly_hours) FROM Employee";
+    private static final String SELECT_PROJECTS = "SELECT (code, name, starting_date, ending_date, status, income, contractor, project_manager) FROM Project";
 
-    private static final String SHOW_COMPANY = "from Company c where c.short_name=:short_name";
+    private static final String SHOW_PROJECT = "from Project p where p.name=:name";
 
 
     @Override
-    public boolean addCompany(Company c) {
+    public boolean addProject(Project p) {
         try(Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
 
-            //Query q = session.createQuery(INSERT_COMPANY);
+            //Query q = session.createQuery(INSERT_PROJECT);
 
             session.close();
             HibernateUtil.getSessionFactory().close();
@@ -35,13 +36,13 @@ public class CompanyDaoImpl implements CompanyDao{
     }
 
     @Override
-    public List<Company> getCompanies() {
+    public List<Project> getProjects() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query q = session.createQuery(SELECT_COMPANIES);
+        Query q = session.createQuery(SELECT_PROJECTS);
 
-        List<Company> resultList = q.list();
+        List<Project> resultList = q.list();
 
         session.close();
         HibernateUtil.getSessionFactory().close();
@@ -49,17 +50,17 @@ public class CompanyDaoImpl implements CompanyDao{
     }
 
     @Override
-    public Company showCompany(Company c) {
+    public Project showProject(Project p) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query=session.createQuery(SHOW_COMPANY);
+        Query query=session.createQuery(SHOW_PROJECT);
         // query.setParameter("name", name);
-        Company company= (Company) query.uniqueResult();
+        Project project = (Project) query.uniqueResult();
 
         session.close();
         HibernateUtil.getSessionFactory().close();
 
-        return company;
+        return project;
     }
 }

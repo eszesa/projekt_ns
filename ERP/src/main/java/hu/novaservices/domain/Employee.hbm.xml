@@ -55,6 +55,9 @@
         <property name="position" type="java.lang.String">
             <column name="POS"/>
         </property>
+        <property name="project" type="java.lang.String">
+            <column name="PROJECT"/>
+        </property>
     </class>
 
 </hibernate-mapping>

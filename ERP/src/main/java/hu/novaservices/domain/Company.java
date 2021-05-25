@@ -29,6 +29,7 @@ public @Data class Company {
     private String billing_name;
     private String billing_address;
 
+    //constructor for all args but id
     public Company(String short_name, String full_name, String tax_number, String industry_classification, String headquarters, String connection_type, String comp_contact, String our_contact, Integer reg_number, String bank_account_number, String description, String billing_name, String billing_address) {
         this.short_name = short_name;
         this.full_name = full_name;

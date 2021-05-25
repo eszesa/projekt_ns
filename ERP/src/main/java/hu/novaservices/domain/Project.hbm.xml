@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="hu.novaservices.domain.Project" table="PROJECTS">
+        <id name="id" type="long">
+            <column name="ID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="code" type="java.lang.String">
+            <column name="CODE"/>
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME"/>
+        </property>
+        <property name="starting_date" type="java.util.Date">
+            <column name="STARTING_DATE"/>
+        </property>
+        <property name="ending_date" type="java.util.Date">
+            <column name="ENDING_DATE"/>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS"/>
+        </property>
+        <property name="income" type="long">
+            <column name="INCOME"/>
+        </property>
+        <property name="contractor" type="java.lang.String">
+            <column name="CONTRACTOR"/>
+        </property>
+        <property name="project_manager" type="java.lang.String">
+            <column name="PROJECT_MANAGER"/>
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION"/>
+        </property>
+    </class>
+
+</hibernate-mapping>

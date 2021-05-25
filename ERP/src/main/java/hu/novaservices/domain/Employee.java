@@ -33,6 +33,7 @@ public @Data class Employee {
     private int hourly_rate;
     private int monthly_hours;
     private String position;
+    private String project;
 
     // constructors
     public Employee() {

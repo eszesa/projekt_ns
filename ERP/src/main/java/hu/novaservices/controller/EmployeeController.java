@@ -1,5 +1,7 @@
 package hu.novaservices.controller;
 
+import hu.novaservices.dao.EmployeeDao;
+import hu.novaservices.dao.EmployeeDaoImpl;
 import hu.novaservices.domain.Employee;
 import hu.novaservices.util.HibernateUtil;
 import javafx.fxml.FXML;
@@ -13,15 +15,27 @@ import java.util.List;
 
 public class EmployeeController {
 
-    public Employee showEmployee(Session session, String name) {
-        Query query=session.createQuery("from Employee e where e.name=:name");
-        query.setParameter("name", name);
-        Employee e= (Employee) query.uniqueResult();
-        return e;
+    private EmployeeDao employeeDao= new EmployeeDaoImpl();
+
+    public EmployeeController() {
+
+    }
+
+    public boolean addEmployee(Employee e) {
+        return employeeDao.addEmployee(e);
+    }
+
+    public List<Employee> getEmployees() {
+        return employeeDao.getEmployees();
+    }
+
+    public Employee showEmployee(Employee e) {
+        return employeeDao.showEmployee(e);
     }
 
     // TODO listEmployees()
 
+    /*
     public static void listEmployees() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -35,7 +49,7 @@ public class EmployeeController {
         session.close();
         HibernateUtil.getSessionFactory().close();
 
-    }
+    }*/
 
     public static void addEmployee() {
 

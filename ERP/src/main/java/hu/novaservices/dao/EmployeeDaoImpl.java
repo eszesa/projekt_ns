@@ -9,8 +9,7 @@ import java.util.List;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 
-    private static final String INSERT_EMPLOYEE = "INSERT INTO Employee (short_name, headquarters, industry_classification, connection_type, comp_contact, our_contact) VALUES " +
-            "(?,?,?,?,?,?)";
+    //private static final String INSERT_EMPLOYEE = "INSERT INTO Employee (short_name, headquarters, industry_classification, connection_type, comp_contact, our_contact) VALUES " + "(?,?,?,?,?,?)";
 
     private static final String SELECT_EMPLOYEES = "SELECT (name, position, status_type, department, monthly_hours) FROM Employee";
 
@@ -22,7 +21,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         try(Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
 
-            Query q = session.createQuery(INSERT_EMPLOYEE);
+           // Query q = session.createQuery(INSERT_EMPLOYEE);
 
             session.close();
             HibernateUtil.getSessionFactory().close();
